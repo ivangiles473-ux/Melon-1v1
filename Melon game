@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>My Game</h1>
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+  <div>
+    <button onclick="action('jab')">Jab</button>
+    <button onclick="action('punch')">Punch</button>
+    <button onclick="action('kick')">Kick</button>
+    <button onclick="action('duck')">Duck</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
