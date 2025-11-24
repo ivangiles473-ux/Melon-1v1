@@ -1,0 +1,37 @@
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+let player = { x: 100, y: 100, size: 50, color: 'green' };
+let playerState = 'idle';
+let actionTimer = 0;
+
+function action(act) {
+  playerState = act;
+  actionTimer = 10;
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  let px = player.x;
+  let py = player.y;
+  let size = player.size;
+  let color = player.color;
+
+  if (playerState === 'jab') { color = 'orange'; px += 10; }
+  else if (playerState === 'punch') { color = 'red'; px += 15; }
+  else if (playerState === 'kick') { color = 'purple'; px += 20; py += 10; }
+  else if (playerState === 'duck') { color = 'blue'; size = 30; py += 10; }
+
+  ctx.fillStyle = color;
+  ctx.fillRect(px, py, size, size);
+
+  if (actionTimer > 0) {
+    actionTimer--;
+    if (actionTimer === 0) playerState = 'idle';
+  }
+
+  requestAnimationFrame(draw);
+}
+
+draw();
